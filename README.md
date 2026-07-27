@@ -1,7 +1,7 @@
 # Edid.io — Personal Portfolio & Studio Landing Page
 
 > **Input. Output. Impact.**  
-> The official landing page for [Edid.io](https://edid-io-edidiongs-projects-b9dcad3a.vercel.app) — a full-stack development studio by Edidiong Apostle (Void Ahpo), based in Port Harcourt, Nigeria.
+> The official landing page for [Edid.io](https://edid-io.vercel.app) — a full-stack development studio by Edidiong Apostle
 
 ---
 
@@ -126,12 +126,7 @@ Light mode overrides are under `html.light { ... }`.
 
 ## Author
 
-**Edidiong Apostle** — Void Ahpo  
-Full-Stack Developer · Port Harcourt, Nigeria
-
-- GitHub: [@edidiongapostle](https://github.com/edidiongapostle)
-- WhatsApp: [+234 814 793 9594](https://wa.me/2348147939594)
-- Email: [Edid.io@gmail.com](mailto:Edid.io@gmail.com)
+**Edidiong Apostle** — Ahpo  
 
 ---
 
