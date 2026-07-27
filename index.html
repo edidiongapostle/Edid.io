@@ -21,6 +21,40 @@
       --green: #39FF8A;
     }
 
+    html.light nav {
+      background: rgba(244,244,248,0.92);
+    }
+
+    html.light {
+      --void: #F4F4F8;
+      --surface: #FFFFFF;
+      --surface2: #EEEEF5;
+      --indigo: #5549E8;
+      --indigo-dim: #5549E811;
+      --indigo-mid: #5549E855;
+      --white: #111118;
+      --muted: #5A5A72;
+      --border: #DDDDE8;
+      --green: #1A8A4A;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 7px 10px;
+      font-size: 1rem;
+      line-height: 1;
+      transition: border-color 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--indigo); color: var(--indigo); }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -56,7 +90,7 @@
       justify-content: space-between;
       padding: 20px 48px;
       border-bottom: 1px solid var(--border);
-      background: rgba(10,10,15,0.85);
+      background: rgba(var(--nav-bg, 10,10,15), 0.92);
       backdrop-filter: blur(12px);
     }
 
@@ -962,6 +996,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta">Start a Project</a></li>
     </ul>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode">🌙</button>
   </nav>
 
   <!-- HERO -->
@@ -1175,7 +1210,7 @@
       <div>
         <div class="section-label">Who we are</div>
         <h2 class="section-title">Built by Void Ahpo,<br/>from Port Harcourt.</h2>
-        <div class="about-handle">// @Ahpo · Edidiong Umana</div>
+        <div class="about-handle">// @void_ahpo · Edidiong Apostle</div>
         <p class="about-text">Edid.io is a one-person development studio run by Edidiong Apostle — a full-stack developer with a background in both software engineering and IT infrastructure, based in Port Harcourt, Rivers State.</p>
         <p class="about-text">The studio was built on a simple idea: businesses in Nigeria and across Africa deserve software that's crafted with the same care and quality as anywhere else in the world.</p>
         <p class="about-text">We've built school management systems, investment platforms, payment integrations, and SaaS products — always with reliability and maintainability as the foundation.</p>
@@ -1226,11 +1261,11 @@
         <h2 class="contact-title">Let's build something real.</h2>
         <p class="contact-desc">Have a project in mind? Whether it's a full platform build, a quick integration, or just a conversation — reach out and let's talk.</p>
         <div class="contact-links">
-          <a href="mailto:Edidiongapostle@gmail.com" class="contact-link">
+          <a href="mailto:Edid.io@gmail.com" class="contact-link">
             <span class="contact-link-icon">✉️</span>
             <div>
               <span class="contact-link-label">Email</span>
-              <span class="contact-link-val">Edidiongapostle@gmail.com</span>
+              <span class="contact-link-val">Edid.io@gmail.com</span>
             </div>
           </a>
           <a href="https://wa.me/2348147939594" class="contact-link">
@@ -1301,7 +1336,17 @@
   </footer>
 
   <script>
-    // Typewriter
+    // Theme toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') { document.documentElement.classList.add('light'); toggleBtn.textContent = '☀️'; }
+
+    toggleBtn.addEventListener('click', () => {
+      const isLight = document.documentElement.classList.toggle('light');
+      toggleBtn.textContent = isLight ? '☀️' : '🌙';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
     const phrases = [
       'build web applications.',
       'integrate payment systems.',
@@ -1361,7 +1406,7 @@
       success.style.display = 'none';
 
       try {
-        const res = await fetch('https://formspree.io/f/xaqraopl', {
+        const res = await fetch('https://formspree.io/f/xeoklwjg', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({ name, email, service: type || 'Not specified', message })
@@ -1378,7 +1423,7 @@
           throw new Error('Failed');
         }
       } catch {
-        error.textContent = '✗ Something went wrong. Email directly: edidiongapostle@gmail.com';
+        error.textContent = '✗ Something went wrong. Email directly: Edid.io@gmail.com';
         error.style.display = 'block';
         btn.textContent = 'Send Message →';
         btn.disabled = false;
