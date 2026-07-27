@@ -550,32 +550,72 @@
       margin-top: 4px;
     }
 
-    .work-visual {
+    .feature-block {
       background: var(--surface2);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      height: 220px;
+      border-radius: 10px;
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      height: 100%;
+    }
+
+    .feature-block-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--indigo);
+    }
+
+    .feature-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .feature-checklist li {
+      font-size: 0.875rem;
+      color: var(--muted);
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
+      gap: 10px;
+    }
+
+    .feature-checklist li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .demo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
       color: var(--indigo);
-      overflow: hidden;
-      position: relative;
+      text-decoration: none;
+      border: 1px solid var(--indigo-mid);
+      background: var(--indigo-dim);
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      align-self: flex-start;
+      margin-top: 4px;
     }
 
-    .code-preview {
-      padding: 24px;
-      font-size: 0.75rem;
-      line-height: 1.8;
-      color: var(--muted);
-      width: 100%;
+    .demo-link:hover {
+      background: var(--indigo);
+      color: #fff;
+      border-color: var(--indigo);
     }
-
-    .code-preview .kw { color: var(--indigo); }
-    .code-preview .str { color: var(--green); }
-    .code-preview .fn { color: #FF9F4A; }
 
     /* STACK */
     .stack-section {
@@ -1121,41 +1161,16 @@
     <p class="section-sub">Projects we've taken from brief to production.</p>
 
     <div class="work-grid">
-      <div class="work-card featured">
-        <div>
-          <div class="work-badge">Education · Platform</div>
-          <h3 class="work-title">Good Success College — School Management System</h3>
-          <p class="work-desc">A full school management platform for ~350 students including a public website, parent/student portal, admin backend, bulk results upload with rollback, Paystack integration with webhook verification, and a bursary dashboard with Excel/PDF export.</p>
-          <div class="work-metrics">
-            <div class="metric">
-              <div class="metric-val">350+</div>
-              <div class="metric-label">Students managed</div>
-            </div>
-            <div class="metric">
-              <div class="metric-val">5</div>
-              <div class="metric-label">Core modules</div>
-            </div>
-            <div class="metric">
-              <div class="metric-val">∞</div>
-              <div class="metric-label">Rollback safety</div>
-            </div>
-          </div>
-        </div>
-        <div class="work-visual">
-          <div class="code-preview">
-            <div><span class="kw">class</span> <span class="fn">ResultsController</span> {</div>
-            <div>&nbsp;&nbsp;<span class="kw">public function</span> <span class="fn">bulkImport</span>() {</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">DB</span>::<span class="fn">beginTransaction</span>();</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">try</span> {</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">$this</span>-><span class="fn">validatePreview</span>();</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">$this</span>-><span class="fn">importResults</span>();</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">DB</span>::<span class="fn">commit</span>();</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;} <span class="kw">catch</span> (<span class="fn">Exception</span> <span class="kw">$e</span>) {</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">DB</span>::<span class="fn">rollBack</span>();</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
-            <div>&nbsp;&nbsp;}</div>
-            <div>}</div>
-          </div>
+      <div class="work-card">
+        <div class="work-badge">Education · Platform</div>
+        <h3 class="work-title">Good Success College — School Management System</h3>
+        <p class="work-desc">A full school management platform for ~350 students including a public website, parent/student portal, admin backend, bulk results upload with rollback, Paystack integration with webhook verification, and a bursary dashboard with Excel/PDF export.</p>
+        <div class="service-tags" style="margin-top: 24px;">
+          <span class="tag">Laravel</span>
+          <span class="tag">Livewire</span>
+          <span class="tag">Paystack</span>
+          <span class="tag">Redis</span>
+          <span class="tag">MySQL</span>
         </div>
       </div>
 
@@ -1261,7 +1276,7 @@
         <h2 class="contact-title">Let's build something real.</h2>
         <p class="contact-desc">Have a project in mind? Whether it's a full platform build, a quick integration, or just a conversation — reach out and let's talk.</p>
         <div class="contact-links">
-          <a href="mailto:edidiongapostle@gmail.com" class="contact-link">
+          <a href="mailto:Edid.io@gmail.com" class="contact-link">
             <span class="contact-link-icon">✉️</span>
             <div>
               <span class="contact-link-label">Email</span>
@@ -1406,7 +1421,7 @@
       success.style.display = 'none';
 
       try {
-        const res = await fetch('https://formspree.io/f/xaqraopl', {
+        const res = await fetch('https://formspree.io/f/xeoklwjg', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({ name, email, service: type || 'Not specified', message })
